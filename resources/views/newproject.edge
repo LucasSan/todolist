@@ -1,0 +1,14 @@
+@layout('main')
+@section('content')
+<h1 class="mb-3">New Project</h1>
+<form action="{{ route('/newproject') }}" method="POST">
+  {{ csrfField() }}
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" name="title" class="form-control {{ hasErrorFor('title') ? 'is-invalid' : '' }}">
+    {{ elIf('<div class="invalid-feedback">$self</div>', getErrorFor('title'), hasErrorFor('title')) }}
+  </div>
+  <button type="submit" class="btn btn-primary">New project</button>
+</form>
+
+@endsection
